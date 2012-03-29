@@ -1,6 +1,6 @@
 Name:		megamario
 Version:	1.7
-Release:	1
+Release:	%mkrel 1
 Summary:	Super Mario Bros 1 clone
 Group:		Games/Arcade
 License:	LGPL+
