@@ -8,7 +8,6 @@ URL:		http://mmario.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/mmario/MegaMario_v%{version}_full.zip
 Source1:	%{name}.desktop
 Patch0:		megamario-1.5-compile-fix.patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	SDL_image-devel
 BuildRequires:	SDL_ttf-devel
@@ -17,7 +16,7 @@ BuildRequires:	desktop-file-utils
 Requires:	hicolor-icon-theme
 
 %description
-MegaMario is a clone of the well know platform game Super Mario Bros 1,
+MegaMario is a clone of the well know platform game Super Mario Bros 1.
 In the game you play Mario, and your task is to free his brother Luigi,
 who was captured by the evil Bowser.
 
