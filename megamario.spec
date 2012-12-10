@@ -1,16 +1,18 @@
 Name:		megamario
 Version:	1.7
-Release:	%mkrel 1
+Release:	1
 Summary:	Super Mario Bros 1 clone
 Group:		Games/Arcade
-License:	LGPL+
+License:	LGPLv2.1
 URL:		http://mmario.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/mmario/MegaMario_v%{version}_full.zip
 Source1:	%{name}.desktop
 Patch0:		megamario-1.5-compile-fix.patch
-BuildRequires:	SDL_mixer-devel
-BuildRequires:	SDL_image-devel
-BuildRequires:	SDL_ttf-devel
+BuildRequires:	pkgconfig(SDL_mixer)
+BuildRequires:	pkgconfig(SDL_image)
+BuildRequires:	pkgconfig(SDL_ttf)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:	imagemagick
 BuildRequires:	desktop-file-utils
 Requires:	hicolor-icon-theme
@@ -27,11 +29,11 @@ who was captured by the evil Bowser.
 sed -i 's/\r//' *.txt
 
 %build
-make %{?_smp_mflags} PREFIX=%{_prefix} CFLAGS="$RPM_OPT_FLAGS -fsigned-char"
+%make PREFIX=%{_prefix} CFLAGS="$RPM_OPT_FLAGS -fsigned-char"
 convert -transparent '#FF00FF' data/gfx/characters/small/player1r.PNG %{name}.png
 
 %install
-make install PREFIX=%{buildroot}%{_prefix}
+%makeinstall PREFIX=%{buildroot}%{_prefix}
 # cruft removal
 rm %{buildroot}%{_datadir}/megamario/levels/1/1
 rm %{buildroot}%{_datadir}/megamario/levels/11/mai
@@ -43,13 +45,6 @@ desktop-file-install --dir %{buildroot}%{_datadir}/applications %{SOURCE1}
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/apps
 install -p -m 644 %{name}.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps
 
-%post
-touch --no-create %{_datadir}/icons/hicolor || :
-%{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
-
-%postun
-touch --no-create %{_datadir}/icons/hicolor || :
-%{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
 
 %files
 %doc CONTROLS.txt readme.txt fixes_v%{version}.txt
@@ -57,5 +52,7 @@ touch --no-create %{_datadir}/icons/hicolor || :
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/48x48/apps/%{name}.png
+
+
 
 
