@@ -4,7 +4,7 @@ Release:	2
 Summary:	Super Mario Bros 1 clone
 Group:		Games/Arcade
 License:	LGPLv2.1
-URL:		http://mmario.sourceforge.net/
+URL:		https://mmario.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/mmario/MegaMario_v%{version}_full.zip
 Source1:	%{name}.desktop
 Patch0:		megamario-1.5-compile-fix.patch
