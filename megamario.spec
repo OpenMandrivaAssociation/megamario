@@ -8,6 +8,7 @@ URL:		https://mmario.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/mmario/MegaMario_v%{version}_full.zip
 Source1:	%{name}.desktop
 Patch0:		megamario-1.5-compile-fix.patch
+BuildRequires:	make
 BuildRequires:	pkgconfig(SDL_mixer)
 BuildRequires:	pkgconfig(SDL_image)
 BuildRequires:	pkgconfig(SDL_ttf)
